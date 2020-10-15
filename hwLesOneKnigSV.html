@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Work</title>
+    <script>
+        function conversion() { //Преобразовал||позаимствовал||вдохновился кодом отсюда => https://webref.ru/html/attr/onclick
+            var cels = parseInt(document.getElementById("Celsium").value);
+            var answer = document.getElementById("answer");
+            var faren = (9 / 5) * cels + 32;
+            answer.innerHTML = "Это будет соответствовать " + faren.toFixed(1) + " &deg;F"
+        }
+
+        function nameToAdmin() {
+            var name = document.getElementById("name").value;
+            var admin = name;
+            output.innerHTML = "Таки " + admin + " =)";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="task-block-teacher">
+        <h3>1. Задать температуру в градусах по Цельсию. Вывести в alert соответствующую температуру в градусах по Фаренгейту. Подсказка: расчёт идёт по формуле: Tf = (9 / 5) * Tc + 32, где Tf – температура по Фаренгейту, Tc – температура по Цельсию</h3>
+        <form action="#">
+            <fieldset>
+                <legend>Ответ</legend>
+                <p>Введите температуру в градусах Цельсия и нажмите кнопку &laquo;Пересчитать&raquo;</p>
+                <p><input type="text" id="Celsium"><span>&deg;C</span><br><br>
+                    <span id="answer"></span>
+                </p>
+                <p><input type="button" value="Пересчитать" onclick="conversion()"></p>
+            </fieldset>
+        </form>
+
+
+        <h3>2. Работа с переменными.</h3>
+
+        <h4>a) Объявить две переменные: admin и name. Записать в name строку «Василий»;</h4>
+
+        <h4>b) Скопировать значение из name в admin. Вывести admin (должно вывести «Василий»).</h4>
+
+        <form action="#">
+            <fieldset>
+                <legend>Ответ</legend>
+                <p>Введите имя (к примеру "Василий" =)) и нажмите &laquo;Вывести admin&raquo;</p>
+                <p><input type="text" id="name"><br><br>
+                    <span id="output"></span>
+                </p>
+                <p><input type="button" value="Вывести admin" onclick="nameToAdmin()"></p>
+            </fieldset>
+        </form>
+        <h3>4. *Чему будет равно JS-выражение 1000 + "108"?</h3>
+        <details>
+            <summary>Ответ</summary>
+            <p>Предполагаю, что 1000108. <br> Проверка:
+                <script>
+                    var a = 1000 + "108";
+                    document.write(a);
+                </script>
+            </p>
+        </details>
+
+        <h3>5. *Самостоятельно разобраться с атрибутами тега script (async и defer).</h3>
+        <h3>Атрибут async</h3>
+   
+
+        <h3>Атрибут defer</h3>
+        <p>Атрибут defer откладывает выполнение скрипта до тех пор, пока вся страница не будет загружена полностью. Работает только при наличии атрибута src.</p>
+
+        Синтаксис
+        <script src="<адрес>" defer>
+            ...
+        </script>
+    </div>
+</body></html>
