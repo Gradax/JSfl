@@ -27,20 +27,13 @@
             <fieldset>
                 <legend>Ответ</legend>
                 <p>Введите температуру в градусах Цельсия и нажмите кнопку &laquo;Пересчитать&raquo;</p>
-                <p><input type="text" id="Celsium"><span>&deg;C</span><br><br>
-                    <span id="answer"></span>
-                </p>
+                <p><input type="text" id="Celsium"><span>&deg;C</span><br><br><span id="answer"></span></p>
                 <p><input type="button" value="Пересчитать" onclick="conversion()"></p>
             </fieldset>
         </form>
-
-
         <h3>2. Работа с переменными.</h3>
-
         <h4>a) Объявить две переменные: admin и name. Записать в name строку «Василий»;</h4>
-
         <h4>b) Скопировать значение из name в admin. Вывести admin (должно вывести «Василий»).</h4>
-
         <form action="#">
             <fieldset>
                 <legend>Ответ</legend>
@@ -54,24 +47,24 @@
         <h3>4. *Чему будет равно JS-выражение 1000 + "108"?</h3>
         <details>
             <summary>Ответ</summary>
-            <p>Предполагаю, что 1000108. <br> Проверка:
+            <p>Предполагаю, что 1000108, поскольку конкатенация имеет больший приоритет. <br> Проверка:
                 <script>
                     var a = 1000 + "108";
                     document.write(a);
                 </script>
             </p>
         </details>
-
         <h3>5. *Самостоятельно разобраться с атрибутами тега script (async и defer).</h3>
-        <h3>Атрибут async</h3>
-   
-
-        <h3>Атрибут defer</h3>
+        <h4>Атрибут async</h4>
+        <p>При наличии атрибута async браузер при возможности запускает скрипт асинхронно. Это означает, что указанный в атрибуте src файл будет выполняться без ожидания загрузки и отображения веб-страницы. В то же время и страница не ожидает результата выполнения скрипта, а продолжает загружаться как обычно.</p>
+        <p>Если задано сразу два атрибута — async и defer, то атрибут async игнорируется.</p>
+        <h5>Синтаксис</h5>
+        <span class="source js embedded"><span class="support tag script">&lt;</span><span class="entity tag script">script</span> <span class="entity tag script attribute">async</span><span class="support tag script">&gt;</span>...<span class="support tag script">&lt;/</span><span class="entity tag script">script</span><span class="support tag script">&gt;</span></span>
+        <p> &copy; <a href="https://webref.ru/html/script/async">Webref/async</a></p>
+        <h4>Атрибут defer</h4>
         <p>Атрибут defer откладывает выполнение скрипта до тех пор, пока вся страница не будет загружена полностью. Работает только при наличии атрибута src.</p>
-
-        Синтаксис
-        <script src="<адрес>" defer>
-            ...
-        </script>
+        <h5>Синтаксис</h5>
+        <pre data-trimmed="true" class="rainbow-show"><code data-language="html" class="rainbow rainbow-show"><span class="support tag"><span class="support tag">&lt;</span><span class="support tag-name">script</span></span> <span class="support attribute">src</span><span class="support operator">=</span><span class="string quote">"</span><span class="string value">&lt;адрес&gt;</span><span class="string quote">"</span> defer<span class="support tag close">&gt;</span>...<span class="support tag"><span class="support tag">&lt;</span><span class="support tag special">/</span><span class="support tag-name">script</span></span><span class="support tag close">&gt;</span></code><div class="preloader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></pre>
+        <p> &copy; <a href="https://webref.ru/html/script/defer">Webref/defer</a></p>
     </div>
 </body></html>
