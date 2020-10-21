@@ -89,7 +89,7 @@
                 alert('15');
                 break;
             default:
-                alert("что-то пошло не так =)");
+                alert("что-то пошло не так =)"); //Тут конечно просится цикл, но Вы сказали не использовать того, что еще не прошли.
         }
 
         //Solution №5
@@ -112,21 +112,19 @@
         //Solution №6
         function mathOperation(arg1, arg2, operation) {
             switch (operation) {
-                case "sum":
+                case sum:
                     return sum(arg1, arg2);
-
-                case "diff":
+                case diff:
                     return diff(arg1, arg2);
-
-                case "divide":
+                case divide:
                     return divide(arg1, arg2);
-                case "multiply":
+                case multiply:
                     return multiply(arg1, arg2);
                 default:
                     alert("введите корректную операцию");
             }
         }
-        alert(mathOperation(3, -5, "sum"));
+        alert("Проверка: 3+5="+mathOperation(3, 5, sum));
 
         //Solution №7
         /*       
