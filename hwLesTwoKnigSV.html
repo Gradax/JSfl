@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>homework №2</title>
+
+</head>
+
+<body>
+    <script>
+        //Solution №1
+        var a = 1,
+            b = 1,
+            c, d;
+        c = ++a;
+        alert(c); // 2 присвоение значения переменной после операции сложения
+        d = b++;
+        alert(d); // 1 присвоения значения переменной до операции сложения
+        c = (2 + ++a);
+        alert(c); // 5 2+c+1
+        d = (2 + b++);
+        alert(d); // 4 2+d+1
+        alert(a); // 3 1 + 2 раза префиксный декремент
+        alert(b); // 3 1+ 2 раза постфиксный декремент   
+
+        //Solution №2
+        var a = 2;
+        var x = 1 + (a *= 2); //5
+        alert(x);
+
+        //Solution №3
+        var a = -3;
+        var b = 4;
+        if (a >= 0 && b >= 0) {
+            alert(a - b);
+        } else if (a < 0 && b < 0) {
+            alert(a * b);
+        } else if ((a < 0 && b >= 0) || (a >= 0 && b < 0)) {
+            alert(a + b);
+        } else {
+            alert("не корректно");
+        }
+
+        //Solution №4
+        var a = 12;
+        switch (a) {
+            case 12:
+                alert("угадал");
+                break;
+            case 13:
+                alert("мимо");
+                break;
+            case 14:
+                alert("мимо");
+                break;
+            case 15:
+                alert("мимо");
+                break;
+            default:
+                alert("вне диапазона");
+        }
+
+        //Solution №5
+        function sum(a, b) {
+            return a + b;
+        }
+
+        function diff(a, b) {
+            return a - b;
+        }
+
+        function divide(a, b) {
+            return a / b;
+        }
+
+        function multiply(a, b) {
+            return a * b;
+        }
+
+        //Solution №6
+        function mathOperation(arg1, arg2, operation) {
+            switch (operation) {
+                case "sum":
+                    return sum(arg1, arg2);
+
+                case "diff":
+                    return diff(arg1, arg2);
+
+                case "divide":
+                    return divide(arg1, arg2);
+                case "multiply":
+                    return multiply(arg1, arg2);
+                default:
+                    alert("введите корректную операцию");
+            }
+        }
+        alert(mathOperation(3, -5, "sum"));
+
+        //Solution №7
+        /*       
+Сравним null с нулём:
+
+alert( null > 0 );  // (1) false
+alert( null == 0 ); // (2) false
+alert( null >= 0 ); // (3) true
+С точки зрения математики это странно. Результат последнего сравнения говорит о том, что "null больше или равно нулю", тогда результат одного из сравнений выше должен быть true, но они оба ложны.
+
+Причина в том, что нестрогое равенство и сравнения > < >= <= работают по-разному. Сравнения преобразуют null в число, рассматривая его как 0. Поэтому выражение (3) null >= 0 истинно, а null > 0 ложно.
+
+С другой стороны, для нестрогого равенства == значений undefined и null действует особое правило: эти значения ни к чему не приводятся, они равны друг другу и не равны ничему другому. Поэтому (2) null == 0 ложно.
+https://learn.javascript.ru/comparison */
+
+        //Solution №8
+        function power(val, pow) {
+            if (pow == 1) {
+                return val;
+            } else {
+                return val * power(val, pow - 1);
+            }
+        }
+        alert(power(3, 2));
+
+    </script>
+
+</body>
+
+</html>
