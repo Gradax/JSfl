@@ -30,8 +30,17 @@
         alert(x);
 
         //Solution №3
-        var a = -3;
-        var b = 4;
+        var a = Math.round(Math.random() * 100);
+        var b = Math.round(Math.random() * 100);
+        var c = Math.random();
+        var d = Math.random();
+        if (c > 0.5) {
+            a = a * (-1);
+        }
+        if (d > 0.5) {
+            b = b * (-1);
+        }
+        alert('a= ' + a + ';\nb= ' + b + ';');
         if (a >= 0 && b >= 0) {
             alert(a - b);
         } else if (a < 0 && b < 0) {
@@ -120,9 +129,6 @@ https://learn.javascript.ru/comparison */
             }
         }
         alert(power(3, 2));
-
     </script>
 
-</body>
-
-</html>
+</body></html>
