@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HW_les3</title>
+</head>
+
+<body>
+    <div class="container">
+        <h3>1. С помощью цикла while вывести все простые числа в промежутке от 0 до 100</h3>
+        <script>
+            var i = 0;
+            while (i <= 100) {
+                document.write(i + ' ');
+                i++;
+            }
+        </script>
+
+        <h3>2. С этого урока начинаем работать с функционалом интернет-магазина. Предположим, есть сущность корзины. Нужно реализовать функционал подсчета стоимости корзины в зависимости от находящихся в ней товаров.</h3>
+
+        <h3>3. Товары в корзине хранятся в массиве. Задачи:</h3>
+
+        <h4>a) Организовать такой массив для хранения товаров в корзине;</h4>
+
+        <h4>b) Организовать функцию countBasketPrice, которая будет считать стоимость корзины.</h4>
+        <script>
+            var basket = [{
+                    title: "Товар1",
+                    price: 100
+                }, {
+                    title: "Товар2",
+                    price: 400
+                }, {
+                    title: "Товар3",
+                    price: 500
+                }
+
+            ]
+
+            function countBasketPrice(basket) {
+                var sumBasket = 0;
+                for (item of basket) {
+                    sumBasket += item.price;
+                }
+                document.write(sumBasket);
+            }
+            countBasketPrice(basket);
+        </script>
+
+        <h3>4.*Вывести с помощью цикла for числа от 0 до 9, не используя тело цикла. Выглядеть это должно так:</h3>
+
+        <p><code>for(…){// здесь пусто}</code></p>
+        <script>
+            for (var i = 0; i < 9; i++, document.write(i)) {}
+        </script>
+
+        <h3>4) *Нарисовать пирамиду с помощью console.log, как показано на рисунке, только у вашей пирамиды должно быть 20 рядов, а не 5:</h3>
+
+        <pre><code>x
+xx
+xxx
+xxxx
+xxxxx
+</code></pre>
+        <script>
+            var piramid = [];
+            var i = 0;
+            while (i < 20) {
+                i++;
+                piramid.push('x');
+                console.log(piramid);
+            }
+        </script>
+    </div>
+</body></html>
