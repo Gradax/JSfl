@@ -12,22 +12,19 @@
 
         <script>
             var inputNumber = +prompt("Введите число от 0 до 999");
-            if (inputNumber < 0 || inputNumber > 1000) { 
+            if (inputNumber < 0 || inputNumber > 1000 || isNaN(inputNumber)) {
                 alert("Не верный ввод, введите число от 0 до 999")
             } else {
                 var inputNumberObject = {};
                 inputNumberObject.units = inputNumber % 10;
-                inputNumberObject.tens = Math.floor((inputNumber % 100)/10);
+                inputNumberObject.tens = Math.floor((inputNumber % 100) / 10);
                 inputNumberObject.hundreds = Math.floor(inputNumber / 100);
-                alert(" Единицы: "+ inputNumberObject.units + "\n Десятки: " + inputNumberObject.tens + "\n Cотни: " + inputNumberObject.hundreds);                
+                alert(" Единицы: " + inputNumberObject.units + "\n Десятки: " + inputNumberObject.tens + "\n Cотни: " + inputNumberObject.hundreds);
             }
 
         </script>
 
-
-
-        <h3>2. Для игры, реализованной на уроке, добавить возможность вывода хода номер n (номер задается пользователем)</h3>
-
-        <h3>3. *На базе игры, созданной на уроке, реализовать игру «Кто хочет стать миллионером?»</h3>
     </div>
-</body></html>
+</body>
+
+</html>
