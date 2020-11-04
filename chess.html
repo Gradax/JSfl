@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>chess</title>
+    <style>
+        .wrapper {
+            width: 560px;
+        }
+
+        .cell {
+            width: 70px;
+            height: 70px;
+            border: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var figure_icon = {
+            0: ["", "a", "b", "c", "d", "e", "f", "g", "h", ""],
+            1: ["8", "&#9820", "&#9822", "&#9821", "&#9819", "&#9818", "&#9821", "&#9822", "&#9820", "8"],
+            2: ["7", "&#9823", "&#9823", "&#9823", "&#9823", "&#9823", "&#9823", "&#9823", "&#9823", "7"],
+            3: ["6", "", "", "", "", "", "", "", "", "6"],
+            4: ["5", "", "", "", "", "", "", "", "", "5"],
+            5: ["4", "", "", "", "", "", "", "", "", "4"],
+            6: ["3", "", "", "", "", "", "", "", "", "3"],
+            7: ["2", "&#9817", "&#9817", "&#9817", "&#9817", "&#9817", "&#9817", "&#9817", "&#9817", "2"],
+            8: ["1", "&#9814", "&#9816", "&#9815", "&#9813", "&#9812", "&#9815", "&#9816", "&#9814", "1"],
+            9: ["", "a", "b", "c", "d", "e", "f", "g", "h", ""]
+        }
+        var table = document.createElement("table");
+        var tr, td;
+        for (var i = 0; i < 10; i++) {
+            tr = document.createElement("tr");
+            table.appendChild(tr);
+            table.className = "wrapper";
+            for (var j = 0; j < 10; j++) {
+                td = document.createElement("td");
+                tr.appendChild(td);
+                td.className = "cell";
+                td.style.fontSize = "34px";
+                td.style.textAlign = "center";
+                if (figure_icon[i][j] != "") {
+                    td.innerHTML = figure_icon[i][j]
+                }
+                if ((i < 9 && i > 0) && (j < 9 && j > 0)) {
+                    if (((i % 2 == 0) && (j % 2 != 0)) || ((i % 2 != 0) && (j % 2 == 0))) {
+                        td.style.backgroundColor = "brown";
+
+                    } else {
+                        td.style.backgroundColor = "yellow";
+
+                    }
+                }
+                if (j == 9 || i == 0) {
+                    td.style.transform = "rotate(180deg)";
+                }
+            }
+        }
+        table.style.border = "1px solid black";
+        table.style.borderCollapse = "collapse";
+        document.querySelector("div").appendChild(table);
+
+    </script>
+</body>
+
+</html>
