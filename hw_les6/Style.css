@@ -1,0 +1,116 @@
+.container {
+    margin: 0 auto;
+    width: 98%;
+    height: 1080px;
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    width: 80%;
+}
+
+.preview {
+    height: 75%;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+}
+
+.arrow {
+    width: 0px;
+    height: 0px;
+    border: 50px solid transparent;
+    border-top-color: red;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+.arrow:before {
+    content: '';
+    width: 0px;
+    height: 0px;
+    border: 30px solid transparent;
+    border-top-color: white;
+    display: inline-block;
+    -webkit-transform: translate(-30px, -50px);
+}
+
+.arrow.right {
+    transform: rotate(270deg) translate(0px, 25px);
+    -webkit-transform: rotate(270deg) translate(0px, 25px);
+    -moz-transform: rotate(270deg) translate(0px, 25px);
+    -o-transform: rotate(270deg) translate(0px, 25px);
+    -ms-transform: rotate(270deg) translate(0px, 25px);
+    position: absolute;
+    bottom: 100px;
+    right: 2%;
+}
+
+.arrow.left {
+    transform: rotate(90deg) translate(0px, 25px);
+    -webkit-transform: rotate(90deg) translate(0px, 25px);
+    -moz-transform: rotate(90deg) translate(0px, 25px);
+    -o-transform: rotate(90deg) translate(0px, 25px);
+    -ms-transform: rotate(90deg) translate(0px, 25px);
+    position: absolute;
+    bottom: 100px;
+    left: 2%;
+}
+
+#bigImg {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 80px;
+    height: 100%;
+    width: auto;
+    -ms-flex-item-align: center;
+    display: block;
+}
+
+.catalog {
+    font-size: 28px;
+    min-height: 25%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.catalog span {
+    font-size: 40px;
+    font-family: cursive;
+
+}
+
+.catalog button {
+    font-size: 30px;
+    font-family: cursive;
+    margin: 5 auto;
+    width: 100%;
+}
+
+.div_item {
+    padding: 1%;
+    margin: 1%;
+}
+
+.basket {
+    border-left: 2px solid black;
+    width: 20%;
+    height: 100%;
+}
+
+.basket table {
+    font-size: 40px;
+    font-family: cursive;
+}
+.basket span {
+    font-size: 32px;
+    text-align: center;
+}
+
+.basket-title {
+    text-align: center;
+    font-size: 52px;
+}
