@@ -29,7 +29,7 @@ var j = 1,
 ];
 
 // Функции
-function constructing() {
+function constructing() {// Построение каталога товаров с миниатюрами изображений;
     var divcatalog = document.getElementsByClassName("catalog")[0];
     var i, item;
     for (i = 0; i < catalog.length; i++) {
@@ -51,7 +51,7 @@ function constructing() {
         itemImg.style.width = "320px";
         itemImg.setAttribute("id", "img_" + i);
         itemImg.onclick = function imgClick(e) {
-            //            Не работает
+            //  Обновление выделения цвета всех итемов на значение по умолчанию          Не работает
             /* var allItems = document.querySelectorAll('.div_item');            
              for (var z = 0; z <= allItems.length; z++) {
                  allItems[z].style.border = "1px solid green";
@@ -86,7 +86,7 @@ function constructing() {
     }
 }
 
-function addToBasket(e) {
+function addToBasket(e) {// Добавление товара в корзину;
     var selectedItem = catalog[e.target.id.split('_')[1]];
     var selectedItems = document.querySelectorAll(".selected_items")[0];
     var tr = selectedItems.insertRow(-1);
@@ -102,20 +102,31 @@ function addToBasket(e) {
     document.getElementsByClassName("ps")[0].textContent = "P/S: В суммарном количестве программирование на данный момент - это куча потраченных нервов и немного радости =)";
 }
 
-function left() { //Когда время будет, попробую реализовать, чтоб оно понимало, на какой картинке оно сейчас находится, сравнив путь файла из массива с текущим, и от него уже начинало отсчет;
+function left() {// Нажатие на стрелку влево;
     var bigImg = document.getElementById('bigImg');
-    //    bigImg.src = '';
+    // Определение текущего положения, не работает...
+/*        for (var k = 0; k <= catalog.length; k++) {
+            if (catalog[k].bigSrc = bigImg.src) {
+                k = j;
+            }
+        }*/
     j--;
     if (j == -1) {
         j = catalog.length - 1;
     }
     bigImg.src = catalog[j].bigSrc;
 
+
 }
 
-function right() { //Когда время будет, попробую реализовать, чтоб оно понимало, на какой картинке оно сейчас находится, сравнив путь файла из массива с текущим, и от него уже начинало отсчет;
+function right() { // Нажатие на стрелку вправо;
     var bigImg = document.getElementById('bigImg');
-    //    bigImg.src = '';
+    // Определение текущего положения, не работает...
+    /*    for (var k = 0; k <= catalog.length; k++) {
+            if (catalog[k].bigSrc == bigImg.src) {
+                k = j;
+            }
+        }*/
     j++;
     if (j >= catalog.length) {
         j = 0;
@@ -127,4 +138,4 @@ function right() { //Когда время будет, попробую реал
 // Тело
 
 window.onload = constructing;
-//window.onload = document.getElementById("img_0").click(); //не работает ( ?
+//window.onload = document.getElementById("img_0").click(); //Выбор по умолчанию в предпросмотре 1 картинки не работает 
