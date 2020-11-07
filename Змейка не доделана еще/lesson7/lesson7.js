@@ -68,7 +68,7 @@ function startGame() {
 
     snake_timer = setInterval(move, SNAKE_SPEED); //каждые 200мс запускаем функцию move
     setTimeout(createFood, 5000);
-    setTimeout(createPoison, 4000);
+    setInterval(createPoison, 4000);
 }
 
 /**
@@ -152,66 +152,64 @@ function move() {
  */
 function isSnakeUnit(unit) { //проверка, что змейка не попала сама в себя в новой ячейке
     var check = false;
-
+    var new_unit_classes = unit.getAttribute('class').split(' ');
     if (snake.includes(unit)) { //если в змейке содержится новая ячейка, значит возникло пересечение
         check = true;
+    } else if (new_unit_classes.includes("food-poison")) {
+            check = true;
+        }
+        return check;
     }
-    return check;
-}
 
-/**
- * проверка на еду
- * @param unit
- * @returns {boolean}
- */
-function haveFood(unit) {
-    var check = false;
+    /**
+     * проверка на еду
+     * @param unit
+     * @returns {boolean}
+     */
+    function haveFood(unit) {
+        var check = false;
 
-    var unit_classes = unit.getAttribute('class').split(' ');
+        var unit_classes = unit.getAttribute('class').split(' ');
 
-    // Если еда
-    if (unit_classes.includes('food-unit')) {
-        check = true;
-        createFood();
+        // Если еда
+        if (unit_classes.includes('food-unit')) {
+            check = true;
+            createFood();
 
-        score++;
-        document.getElementById("countSpan").innerHTML = score;
+            score++;
+            document.getElementById("countSpan").innerHTML = score;
+        }
+        return check;
     }
-    return check;
-}
 
-/**
- * Создание еды
- */
-function createFood() {
-    var foodCreated = false;
+    /**
+     * Создание еды
+     */
+    function createFood() {
+        var foodCreated = false;
 
-    while (!foodCreated) { //пока еду не создали
-        // рандом
-        var food_x = Math.floor(Math.random() * FIELD_SIZE_X);
-        var food_y = Math.floor(Math.random() * FIELD_SIZE_Y);
+        while (!foodCreated) { //пока еду не создали
+            // рандом
+            var food_x = Math.floor(Math.random() * FIELD_SIZE_X);
+            var food_y = Math.floor(Math.random() * FIELD_SIZE_Y);
 
-        var food_cell = document.getElementsByClassName('cell-' + food_y + '-' + food_x)[0];
-        var food_cell_classes = food_cell.getAttribute('class').split(' ');
+            var food_cell = document.getElementsByClassName('cell-' + food_y + '-' + food_x)[0];
+            var food_cell_classes = food_cell.getAttribute('class').split(' ');
 
-        // проверка на змейку
-        if (!food_cell_classes.includes('snake-unit')) {
-            var classes = '';
-            for (var i = 0; i < food_cell_classes.length; i++) {
-                classes += food_cell_classes[i] + ' ';
+            // проверка на змейку
+            if (!food_cell_classes.includes('snake-unit')) {
+                var classes = '';
+                for (var i = 0; i < food_cell_classes.length; i++) {
+                    classes += food_cell_classes[i] + ' ';
+                }
+
+                food_cell.setAttribute('class', classes + ' food-unit');
+                foodCreated = true;
             }
-
-            food_cell.setAttribute('class', classes + ' food-unit');
-            foodCreated = true;
         }
     }
-}
-// !!!Task 2, создание яда;
-function createPoison() {
-    var PoisonCreated = false;
-    PoisonCreated = false;
-
-    while (!PoisonCreated) {
+    // !!!Task 2, создание яда;
+    function createPoison() {
         // рандом
         var poison_x = Math.floor(Math.random() * FIELD_SIZE_X);
         var poison_y = Math.floor(Math.random() * FIELD_SIZE_Y);
@@ -229,57 +227,66 @@ function createPoison() {
                 classes += poison_cell_classes[i] + ' ';
             }
             poison_cell.setAttribute('class', classes);
+            // через 3 секунды убрать желтый блок;
+            setTimeout(delPois, 3000);
+
+            function delPois() {
+                poison_cell_classes.pop();
+                var classes = '';
+                for (var i = 0; i < poison_cell_classes.length; i++) {
+                    classes += poison_cell_classes[i] + ' ';
+                    poison_cell.setAttribute('class', classes);
+                }
+            }
         }
-        PoisonCreated = true;
     }
-}
 
-/**
- * Изменение направления движения змейки
- * @param e - событие
- */
-function changeDirection(e) {
-    console.log(e);
+    /**
+     * Изменение направления движения змейки
+     * @param e - событие
+     */
+    function changeDirection(e) {
+        console.log(e);
 
-    switch (e.keyCode) {
-        case 37: // Клавиша влево
-            if (direction != 'x+') {
-                direction = 'x-'
-            }
-            break;
-        case 38: // Клавиша вверх
-            if (direction != 'y-') {
-                direction = 'y+'
-            }
-            break;
-        case 39: // Клавиша вправо
-            if (direction != 'x-') {
-                direction = 'x+'
-            }
-            break;
-        case 40: // Клавиша вниз
-            if (direction != 'y+') {
-                direction = 'y-'
-            }
-            break;
+        switch (e.keyCode) {
+            case 37: // Клавиша влево
+                if (direction != 'x+') {
+                    direction = 'x-'
+                }
+                break;
+            case 38: // Клавиша вверх
+                if (direction != 'y-') {
+                    direction = 'y+'
+                }
+                break;
+            case 39: // Клавиша вправо
+                if (direction != 'x-') {
+                    direction = 'x+'
+                }
+                break;
+            case 40: // Клавиша вниз
+                if (direction != 'y+') {
+                    direction = 'y-'
+                }
+                break;
+        }
     }
-}
 
-/**
- * Функция завершения игры
- */
-function finishTheGame() {
-    gameIsRunning = false;
-    clearInterval(snake_timer);
-    alert('Вы проиграли! Ваш результат: ' + score.toString());
-}
+    /**
+     * Функция завершения игры
+     */
+    function finishTheGame() {
+        gameIsRunning = false;
+        clearInterval(snake_timer);
+        alert('Вы проиграли! Ваш результат: ' + score.toString());
+    }
 
-/**
- * Новая игра
- */
-function refreshGame() {
-    location.reload();
-}
+    /**
+     * Новая игра
+     */
+    function refreshGame() {
+        location.reload();
+    }
 
-// Инициализация
-window.onload = init;
+    // Инициализация
+    window.onload = init;
